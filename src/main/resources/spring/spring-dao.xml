@@ -16,6 +16,12 @@
         <!--c3p0参数配置-->
         <!--最大空闲时间，30秒内未使用则连接被丢弃。若为0则永不丢弃。默认值: 0 -->
         <property name="maxIdleTime" value="30"></property>
+        <!-- 关闭连接后不自动commit-->
+        <property name="autoCommitOnClose" value="false"/>
+        <!-- 获取连接超时时间-->
+        <property name="checkoutTimeout" value="20000"/>
+        <!-- 获取连接失败重试次数-->
+        <property name="acquireRetryAttempts" value="3"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -1,6 +1,7 @@
 package cn.jims.service.impl;
 
 import cn.jims.dao.BookMapperCustom;
+import cn.jims.dao.cache.RedisDao;
 import cn.jims.entity.BookCustom;
 import cn.jims.entity.BookQueryVo;
 import cn.jims.service.BookCustomService;

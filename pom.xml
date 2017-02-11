@@ -11,12 +11,12 @@
     <name>ssm</name>
 
     <properties>
-        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring.version>4.3.5.RELEASE</spring.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <war-name.version>ssm</war-name.version>
     </properties>
 
-    <dependencyManagement>
+
         <dependencies>
             <!-- junit -->
             <dependency>
@@ -36,7 +36,6 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>1.7.22</version>
             </dependency>
-
 
             <!-- spring -->
             <dependency>
@@ -214,7 +213,6 @@
                 <version>1.0.12</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>

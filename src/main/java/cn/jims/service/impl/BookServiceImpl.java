@@ -8,6 +8,7 @@ import cn.jims.exception.CustomException;
 import cn.jims.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.security.x509.IPAddressName;
 
 /**
  * Created by Jims on 2017/2/7.
@@ -32,6 +33,7 @@ public class BookServiceImpl implements BookService {
         if (book == null) {
             // 缓存中未获取到，从数据库获取，并缓存到Redis
             book = bookMapper.selectByPrimaryKey(bookId);
+            System.out.println(book);
             redisDao.putBook(book);
         }
         return book;

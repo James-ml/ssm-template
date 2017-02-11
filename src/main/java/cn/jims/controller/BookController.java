@@ -92,8 +92,6 @@ public class BookController {
             return "edit";
         }
 
-        //long l = bookCustom.getBookid();
-        //System.out.println(l);
         int i = bookService.updateByPrimaryKey(id, bookCustom);
         System.out.println(i);
         return "success";

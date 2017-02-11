@@ -59,7 +59,7 @@ public class ServiceTest {
         bookQueryVo.setBookList(list);
         try {
             List<BookCustom> booklist = bookMapperCustom.findBookList(null);
-            for(Book book:booklist){
+            for (Book book : booklist) {
                 System.out.println(book);
             }
         } catch (Exception e) {

@@ -13,6 +13,8 @@
         <property name="user" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="driverClass" value="${jdbc.driver}"/>
+        <!--validationQuery是用来验证数据库连接的查询语句-->
+        <!--<property name="validationQuery" value="{jdbc.validation}"/>-->
         <!--c3p0参数配置-->
         <!--最大空闲时间，30秒内未使用则连接被丢弃。若为0则永不丢弃。默认值: 0 -->
         <property name="maxIdleTime" value="30"></property>
@@ -37,8 +39,14 @@
     </bean>
 
     <!-- redisDao-->
-    <bean id="redisDao" class="cn.jims.dao.cache.RedisDao">
-        <constructor-arg index="0" value="127.0.0.1"/>
-        <constructor-arg index="1" value="6379"/>
+    <bean id="redisDao" class="cn.jims.dao.cache.RedisDao"/>
+
+    <bean id="jedisPool" class="cn.jims.entity.PoolConfig">
+        <property name="ip" value="127.0.0.1"/>
+        <property name="port" value="6379"/>
+        <property name="maxActive" value="300"/>
+        <property name="maxIdle" value="100"/>
+        <property name="maxWait" value="10000"/>
+        <property name="testOnBorrow" value="true"/>
     </bean>
 </beans>

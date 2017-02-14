@@ -19,21 +19,19 @@ public class RedisDao {
     @Autowired
     private PoolConfig jedisPool;
 
+    //private JedisPool jedisPool;
+
     //protostuff序列化entity.
     private RuntimeSchema<Book> schema = RuntimeSchema.createFrom(Book.class);
 
     /*public RedisDao(String ip, int port) {
         JedisPool jedisPool = new JedisPool(ip,port);
     }*/
-    //JedisPool jedisPool = new PoolConfig();
 
     public Book getBook(long bookId) {
-        System.out.println(jedisPool.getIp()+"==="+jedisPool.getPort());
         //redis操作逻辑
         try {
-            System.out.println("========7===========");
             Jedis jedis = jedisPool.getResource();
-            System.out.println("========8===========");
             try {
                 String key = "book:" + bookId;
                 //并没有实现内部序列化操作

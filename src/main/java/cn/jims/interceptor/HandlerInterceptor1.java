@@ -25,7 +25,7 @@ public class HandlerInterceptor1 implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		
-		System.out.println("HandlerInterceptor1...preHandle");
+		//System.out.println("HandlerInterceptor1...preHandle");
 		
 		//return false表示拦截，不向下执行
 		//return true表示放行
@@ -39,7 +39,7 @@ public class HandlerInterceptor1 implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		System.out.println("HandlerInterceptor1...postHandle");
+		//System.out.println("HandlerInterceptor1...postHandle");
 		
 	}
 
@@ -50,7 +50,7 @@ public class HandlerInterceptor1 implements HandlerInterceptor {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		
-		System.out.println("HandlerInterceptor1...afterCompletion");
+		//System.out.println("HandlerInterceptor1...afterCompletion");
 	}
 
 }

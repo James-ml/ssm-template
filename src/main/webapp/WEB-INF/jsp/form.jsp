@@ -17,6 +17,7 @@
             <td>图书名称</td>
             <td>图书数量</td>
             <td>操作</td>
+            <td align="center"><a href="<c:url value='/book/addBook'/>">添加</a></td>
         </tr>
         <c:forEach items="${list }" var="book">
         <tr>
@@ -24,6 +25,7 @@
             <td>${book.name }</td>
             <td>${book.number }</td>
             <td><a HREF="<c:url value='/book/editBook/${book.bookid }'/>">修改</a></td>
+            <td><a HREF="<c:url value='/book/deleteBook/${book.bookid }'/>">删除</a></td>
         </tr>
         </c:forEach>
     </table>

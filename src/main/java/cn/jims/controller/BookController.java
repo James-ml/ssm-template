@@ -1,6 +1,7 @@
 package cn.jims.controller;
 
 import cn.jims.controller.validation.ValidGroup1;
+import cn.jims.controller.validation.ValidGroup2;
 import cn.jims.entity.Book;
 import cn.jims.entity.BookCustom;
 import cn.jims.exception.CustomException;
@@ -36,7 +37,7 @@ public class BookController {
         try {
             book = bookService.selectByPrimaryKey(id);
         } catch (CustomException e) {
-            model.addAttribute("error",e.getMessage());
+            model.addAttribute("error", e.getMessage());
             return "error";
         }
         model.addAttribute("book", book);
@@ -46,7 +47,7 @@ public class BookController {
     @Autowired
     private BookCustomService bookCustomService;
 
-    @RequestMapping(value = "/findBook", method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/findBook", method = {RequestMethod.GET, RequestMethod.POST})
     public String findBook(Model model) {
         List<BookCustom> bookList = null;
         try {
@@ -65,7 +66,8 @@ public class BookController {
         try {
             book = bookService.selectByPrimaryKey(id);
         } catch (CustomException e) {
-            model.addAttribute("error",e.getMessage());
+            model.addAttribute("error", e.getMessage());
+            return "error";
         }
         model.addAttribute("book", book);
         return "edit";
@@ -82,18 +84,18 @@ public class BookController {
         if (bindingResult.hasErrors()) {
             //获取错误信息
             List<ObjectError> allErrors = bindingResult.getAllErrors();
-            for (ObjectError objectError:allErrors){
+            for (ObjectError objectError : allErrors) {
                 System.out.println(objectError.getDefaultMessage());
             }
 
             model.addAttribute("errors", allErrors);
-            model.addAttribute("book",bookCustom);
+            model.addAttribute("book", bookCustom);
 
             return "edit";
         }
 
         int i = bookService.updateByPrimaryKey(id, bookCustom);
-        System.out.println(i);
+
         return "success";
     }
 
@@ -102,5 +104,39 @@ public class BookController {
         ModelAndView m = new ModelAndView();
         m.setViewName("/json.jsp");
         return m;
+    }
+
+    @RequestMapping("addBook")
+    public String add() {
+        return "add";
+    }
+
+    @RequestMapping(value = "addSubmit", method = {RequestMethod.POST,
+            RequestMethod.GET})
+    public String addSubmit(Model model, @Validated(value = {ValidGroup2.class}) Book book, BindingResult bindingResult) {
+        //校验表单提交的信息
+        if (bindingResult.hasErrors()) {
+            //获取错误信息
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+
+            model.addAttribute("errors", allErrors);
+            model.addAttribute("book", book);
+
+            return "add";
+        }
+        int i = bookService.add(book);
+
+        return "success";
+    }
+
+    @RequestMapping("/deleteBook/{id}")
+    public String delete(Model model,@PathVariable("id") long id){
+        try {
+            bookService.delete(id);
+        } catch (Exception e){
+            model.addAttribute("error","操作失败！");
+            return "error";
+        }
+        return "success";
     }
 }

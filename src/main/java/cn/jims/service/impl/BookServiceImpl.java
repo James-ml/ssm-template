@@ -44,4 +44,14 @@ public class BookServiceImpl implements BookService {
         return bookMapper.updateByPrimaryKey(record);
     }
 
+    @Override
+    public int add(Book book) {
+        return bookMapper.insert(book);
+    }
+
+    @Override
+    public int delete(long bookId) {
+        return bookMapper.deleteByPrimaryKey(bookId);
+    }
+
 }

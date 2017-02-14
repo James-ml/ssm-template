@@ -11,4 +11,8 @@ public interface BookService {
     Book selectByPrimaryKey(Long bookId) throws CustomException;
 
     int updateByPrimaryKey(long bookId,Book record);
+
+    int add(Book book);
+
+    int delete(long bookId);
 }

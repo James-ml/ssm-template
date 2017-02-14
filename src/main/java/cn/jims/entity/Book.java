@@ -1,6 +1,7 @@
 package cn.jims.entity;
 
 import cn.jims.controller.validation.ValidGroup1;
+import cn.jims.controller.validation.ValidGroup2;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,9 +12,9 @@ import javax.validation.constraints.Size;
 public class Book {
     private Long bookid;
     //表单校验参数
-    @Size(min = 1, max = 10, message = "{book.name.length.error}", groups = {ValidGroup1.class})
+    @Size(min = 1, max = 10, message = "{book.name.length.error}", groups = {ValidGroup1.class, ValidGroup2.class})
     private String name;
-    @NotNull(message = "{book.number.idNull}", groups = {ValidGroup1.class})
+    @NotNull(message = "{book.number.idNull}", groups = {ValidGroup1.class,ValidGroup2.class})
     private Integer number;
 
     public Long getBookid() {
